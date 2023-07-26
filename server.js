@@ -4,8 +4,9 @@ const app = express();
 // Coding views in EJS
 app.set('view engine', 'ejs');
 
+// This render from index.ejs to website
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.render('index');
 });
 
 app.listen(5001);
