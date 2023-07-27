@@ -10,7 +10,7 @@ app.use('/articles', articleRouter);
 
 // This render from index.ejs to website
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { text: 'Hello' });
 });
 
 app.listen(5001);
