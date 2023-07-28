@@ -10,7 +10,12 @@ app.use('/articles', articleRouter);
 
 // This render from index.ejs to website
 app.get('/', (req, res) => {
-  res.render('index', { text: 'Hello' });
+  const articles = [{
+    title: 'Test Article',
+    createdAt: Date.now(),
+    description: 'Test description'
+  }];
+  res.render('index', { articles: articles });
 });
 
 app.listen(5001);
