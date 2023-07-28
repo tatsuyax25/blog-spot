@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // This is connected to the server.js
-router.get('/', (req, res) => {
+router.get('/test', (req, res) => {
   res.send('In articles');
 });
 
