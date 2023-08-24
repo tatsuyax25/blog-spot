@@ -4,7 +4,7 @@ const articleRouter = require('./routes/articles');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/blog', {
+mongoose.connect('mongodb://localhost:27017/blog', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -12,9 +12,10 @@ mongoose.connect('mongodb://localhost/blog', {
 // Coding views in EJS
 app.set('view engine', 'ejs');
 
-// Use the article router
-app.use('/articles', articleRouter);
+// Body Parser
 app.use(express.urlencoded({ extended: false }));
+
+
 
 // This render from index.ejs to website
 app.get('/', (req, res) => {
@@ -30,5 +31,8 @@ app.get('/', (req, res) => {
   }];
   res.render('articles/index', { articles: articles });
 });
+
+// Use the article router
+app.use('/articles', articleRouter);
 
 app.listen(5001);

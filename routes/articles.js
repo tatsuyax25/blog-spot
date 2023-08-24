@@ -8,6 +8,11 @@ router.get('/new', (req, res) => {
   res.render('articles/new');
 });
 
+// This is connected to the server.js
+router.get('/:id', (req, res) => {
+  
+})
+
 router.post('/', async (req, res) => {
   const article = new Article({
     title: req.body.title,
@@ -15,8 +20,16 @@ router.post('/', async (req, res) => {
     markdown: req.body.markdown
   })
 
-  // Save article
-  await article.save()
+  try {
+    // Save article
+    article = await article.save()
+    res.redirect(`/articles/${article.id}`);
+  } catch (error) {
+    res.render('articles/new', {
+      article: article
+    })
+  }
+  
 });
 
 module.exports = router;
