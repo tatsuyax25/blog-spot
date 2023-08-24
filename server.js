@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');
 
 // Use the article router
 app.use('/articles', articleRouter);
+app.use(express.urlencoded({ extended: false }));
 
 // This render from index.ejs to website
 app.get('/', (req, res) => {
