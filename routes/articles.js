@@ -10,11 +10,11 @@ router.get('/new', (req, res) => {
 
 // This is connected to the server.js
 router.get('/:id', (req, res) => {
-  
+  res.send(req.params.id);
 })
 
 router.post('/', async (req, res) => {
-  const article = new Article({
+  let article = new Article({
     title: req.body.title,
     description: req.body.description,
     markdown: req.body.markdown
@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
     article = await article.save()
     res.redirect(`/articles/${article.id}`);
   } catch (error) {
+    console.log(error);
     res.render('articles/new', {
       article: article
     })
