@@ -5,7 +5,7 @@ const router = express.Router();
 
 // This is connected to the server.js
 router.get('/new', (req, res) => {
-  res.render('articles/new');
+  res.render('articles/new', { article: new Article() });
 });
 
 // This is connected to the server.js
